@@ -48,7 +48,7 @@ function saveImage() {
             document.getElementById("log").innerHTML = "No file selected! Please select a file.";
         }
     } catch (error) {
-        document.getElementById("log").innerHTML = error;
+        document.getElementById("log").innerHTML = error.stack;
     }
 }
 
@@ -59,6 +59,6 @@ function saveSettings() {
         window.localStorage.setItem("BACKGROUND:::settings", JSON.stringify(settings));
         document.getElementById("log").innerHTML = "Saved!";
     } catch (error) {
-        document.getElementById("log").innerHTML = error;
+        document.getElementById("log").innerHTML = error.stack;
     }
 }
