@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Background</title>
+        <style>
+            html,body{
+                margin:0;
+                height:100%;
+                overflow:hidden;
+            }
+            img{
+                position:absolute;
+                top:-100%; bottom:-100%;
+                left:-100%; right:-100%;
+                margin:auto;
+            }
+        </style>
+        <script src="./main.js"></script>
+    </head>
+    <body onload="onLoad()" onresize="onLoad()">
+        <img id="bg" src="Background.png"></img>
+        <p id="log"></p>
+    </body>
+</html>

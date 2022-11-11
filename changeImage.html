@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Change Background Image</title>
+        <script src="./changeImage.js"></script>
+    </head>
+    <body onload="onLoad()">
+        Image: <input type="file" id="input" accept="image/*" onchange="displayImage()"><br><br>
+        <button onclick="saveImage()">Save image</button><br>
+        <img src="" id="preview"><br><br>
+        <select id="fillType">
+            <option value="width">Scale to width</option>
+            <option value="height">Scale to height</option>
+            <option value="max" selected="selected">Overflow</option>
+            <optgroup label="Stretch">
+                <option value="cover">Stretch to cover</option>
+                <option value="min">Don't stretch</option>
+            </optgroup>
+        </select><br><br>
+        Whitespace color: <input type="color" id="whitespace">
+        <button onclick="saveSettings()">Save settings</button>
+        <p id="log"></p>
+    </body>
+</html>
