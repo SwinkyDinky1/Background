@@ -1,14 +1,20 @@
-var backgroundSettings = {
+var settings = {
     fillType : "",
     whitespace : ""
 };
 
 function onLoad() {
     displayImage();
-    backgroundSettings = JSON.parse(localStorage.getItem('BACKGROUND:::settings'));
+    settings = JSON.parse(localStorage.getItem('BACKGROUND:::settings'));
+    if(!settings) {
+        settings = {
+            fillType : "max",
+            whitespace : "#000000"
+        };
+    }
     if(settings) {
-        document.getElementById("fillType").value = backgroundSettings.fillType;
-        document.getElementById("whitespace").value = backgroundSettings.whitespace;
+        document.getElementById("fillType").value = settings.fillType;
+        document.getElementById("whitespace").value = settings.whitespace;
     }
 }
 
@@ -20,7 +26,11 @@ function displayImage() {
             document.getElementById("preview").src = url;
             console.log(url);
         } else {
-            document.getElementById("preview").src = window.localStorage.getItem("BACKGROUND:::imgData");
+            if(window.localStorage.getItem("BACKGROUND:::imgData")) {
+                document.getElementById("preview").src = window.localStorage.getItem("BACKGROUND:::imgData");
+            } else {
+                document.getElementById("preview").src = "./Background.png";
+            }
         }
     } catch (error) {
         document.getElementById("log").innerHTML = error.stack;
@@ -54,9 +64,9 @@ function saveImage() {
 
 function saveSettings() {
     try {
-        backgroundSettings.fillType = document.getElementById("fillType").value;
-        backgroundSettings.whitespace = document.getElementById("whitespace").value;
-        window.localStorage.setItem("BACKGROUND:::settings", JSON.stringify(backgroundSettings));
+        settings.fillType = document.getElementById("fillType").value;
+        settings.whitespace = document.getElementById("whitespace").value;
+        window.localStorage.setItem("BACKGROUND:::settings", JSON.stringify(settings));
         document.getElementById("log").innerHTML = "Saved!";
     } catch (error) {
         document.getElementById("log").innerHTML = error.stack;
