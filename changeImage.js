@@ -1,14 +1,14 @@
-var settings = {
+var backgroundSettings = {
     fillType : "",
     whitespace : ""
 };
 
 function onLoad() {
     displayImage();
-    settings = JSON.parse(localStorage.getItem('BACKGROUND:::settings'));
+    backgroundSettings = JSON.parse(localStorage.getItem('BACKGROUND:::settings'));
     if(settings) {
-        document.getElementById("fillType").value = settings.fillType;
-        document.getElementById("whitespace").value = settings.whitespace;
+        document.getElementById("fillType").value = backgroundSettings.fillType;
+        document.getElementById("whitespace").value = backgroundSettings.whitespace;
     }
 }
 
@@ -54,9 +54,9 @@ function saveImage() {
 
 function saveSettings() {
     try {
-        settings.fillType = document.getElementById("fillType").value;
-        settings.whitespace = document.getElementById("whitespace").value;
-        window.localStorage.setItem("BACKGROUND:::settings", JSON.stringify(settings));
+        backgroundSettings.fillType = document.getElementById("fillType").value;
+        backgroundSettings.whitespace = document.getElementById("whitespace").value;
+        window.localStorage.setItem("BACKGROUND:::settings", JSON.stringify(backgroundSettings));
         document.getElementById("log").innerHTML = "Saved!";
     } catch (error) {
         document.getElementById("log").innerHTML = error.stack;
