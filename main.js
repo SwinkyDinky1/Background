@@ -3,6 +3,12 @@ var settings = {};
 
 function onLoad() {
     try {
+        if(settings == null) {
+            settings = {
+                fillType : "max",
+                whitespace : "#000000"
+            };
+        }
         var data = localStorage.getItem('BACKGROUND:::imgData');
         if(data) {
             bg = document.getElementById('bg');
